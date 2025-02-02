@@ -29,7 +29,10 @@ def main():
     )
 
     chain = summary_prompt_template | llm | StrOutputParser()
-    linkedin_data = scrape_linkedin_profile("", True)
+    linkedin_data = scrape_linkedin_profile(
+        "https://www.linkedin.com/in/topiaamr/",
+        mock=True,
+    )
     res = chain.invoke(input={"information": linkedin_data})
     print(res)
 
