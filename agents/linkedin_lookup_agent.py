@@ -26,7 +26,7 @@ def lookup(name: str, mock: bool = False) -> str:
         base_url=os.getenv("OLLAMA_BASE_URL"),
     )
     template = """given the full name {name_of_person} I want you to get me a link to their Linkedin profile page. 
-    your answer should contain only a URL"""
+    Your answer only contain only a URL"""
 
     prompt_template = PromptTemplate(
         template=template,

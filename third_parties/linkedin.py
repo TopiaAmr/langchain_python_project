@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def scrape_linkedin_profile(linkedin_profile_url: str, mock: bool = False):
+def scrape_linkedin_profile(linkedin_profile_url: str, mock: bool = False) -> object:
     """
     Scrape a LinkedIn profile and return the data as a dictionary.
 
@@ -66,5 +66,5 @@ def scrape_linkedin_profile(linkedin_profile_url: str, mock: bool = False):
 
 
 if __name__ == "__main__":
-    data = scrape_linkedin_profile("", True)
+    data = scrape_linkedin_profile("https://eg.linkedin.com/in/topiaamr", True)
     pprint.pprint(data)

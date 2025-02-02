@@ -5,11 +5,15 @@ from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_ollama import ChatOllama
 
+from agents.linkedin_lookup_agent import lookup
 from third_parties.linkedin import scrape_linkedin_profile
 
+load_dotenv()
 
-def main():
-    load_dotenv()
+
+def ice_break_with(name: str) -> str:
+    linkedin_url: str = lookup(name)
+    linkedin_data = scrape_linkedin_profile(linkedin_url.replace("'",""))
 
     summary_template = """
     given the LinkedIn information {information} about a person from I want you to create:
@@ -29,13 +33,9 @@ def main():
     )
 
     chain = summary_prompt_template | llm | StrOutputParser()
-    linkedin_data = scrape_linkedin_profile(
-        "https://www.linkedin.com/in/topiaamr/",
-        mock=True,
-    )
     res = chain.invoke(input={"information": linkedin_data})
     print(res)
 
 
 if __name__ == "__main__":
-    main()
+    ice_break_with("Amr E. Flutter App Developer Aljeraisy HR Company")
