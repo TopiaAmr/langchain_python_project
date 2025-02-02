@@ -27,7 +27,7 @@ def lookup(name: str, mock: bool = False) -> str:
         num_ctx=8000,
     )
     template = """given the full name {name_of_person} I want you to get me a link to their Linkedin profile page. 
-    Your answer only contain only a URL with no formatting or wrapping around quotes."""
+    Your answer only contain only a URL without formatting or wrapping around quotes."""
 
     prompt_template = PromptTemplate(
         template=template,
