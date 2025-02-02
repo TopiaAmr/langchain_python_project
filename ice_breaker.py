@@ -13,7 +13,7 @@ load_dotenv()
 
 def ice_break_with(name: str) -> str:
     linkedin_url: str = lookup(name)
-    linkedin_data = scrape_linkedin_profile(linkedin_url.replace("'",""))
+    linkedin_data = scrape_linkedin_profile(linkedin_url)
 
     summary_template = """
     given the LinkedIn information {information} about a person from I want you to create:
